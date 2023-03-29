@@ -1,0 +1,104 @@
+@import './variables';
+@import './resets';
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600;700;900&display=swap');
+
+@mixin box-shadow {
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content
+    }
+}
+
+
+.user-form {
+    width: 100%;
+    max-width: 700px;
+
+    & input {
+        width: 100%;
+        display: block;
+        background-color: $secondary-color;
+        border: none;
+        border-radius: 10px;
+        color: $text-color;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        font-family: inherit;
+        font-size: 1rem;
+        @include box-shadow;
+
+        &::placeholder {
+            color: $ph-color;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    @include mobile {
+        max-width: 400px;
+    }
+}
+
+.card {
+    max-width: 800px;
+    background-color: $secondary-color;
+    border-radius: 20px;
+    @include box-shadow;
+    display: flex;
+    padding: 3rem;
+    margin: 0 1.5rem;
+
+    & .avatar {
+        border-radius: 50%;
+        border: 8px solid $accent-color;
+        height: 150px;
+        width: 150px;
+    }
+
+    & .user-info {
+        color: $text-color;
+        margin-left: 2rem;
+
+        & h2 {
+            margin-top: 0;
+        }
+
+        & ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            max-width: 400px;
+
+            & li {
+                display: flex;
+                align-items: center;
+
+                & strong {
+                    font-size: 0.9rem;
+                    margin-left: 0.5rem;
+                }
+            }
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.repo {
+    text-decoration: none;
+    color: $secondary-color;
+    background-color: $some-color;
+    font-size: 0.7rem;
+    padding: 0.25em 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
